@@ -1,0 +1,21 @@
+﻿@using System.Security.Claims
+<h1>Role Based Authentication System</h1>
+<h3>Name: Ujjwal Upreti</h3>
+<h3>B.Sc.CSIT 6th Sem .NET Lab </h3>
+<hr />
+@if (User.Identity != null && User.Identity.IsAuthenticated)
+{
+    <h3>Welcome, @User.Identity.Name!</h3>
+    <p>
+        Your Role: @User.FindFirst(ClaimTypes.Role)?.Value
+    </p>
+    <a href="/Admin">Admin Page</a>
+    <br />
+    <br />
+    <a href="/Account/Logout">Logout</a>
+}
+else
+{
+    <p>You are not logged in.</p>
+    <a href="/Account/Login">Login</a>
+}
